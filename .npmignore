@@ -5,3 +5,4 @@ rollup.config.js
 tsconfig.json
 .rpt2_cache/
 .nvmrc
+.mocharc.json

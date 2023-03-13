@@ -1,0 +1,15 @@
+{
+    "require": [
+        "esm",
+        "ts-node/register"
+    ],
+    "extensions": [
+        "js"
+    ],
+    "spec": [
+        "tests/**/*.spec.*"
+    ],
+    "watch-files": [
+        "src"
+    ]
+}
