@@ -1,13 +1,19 @@
 {
-  "name": "rollup-plugin-screeps",
+  "name": "@tsrberry/rollup-plugin-screeps",
   "description": "Rollup Plugin for Screeps",
   "license": "MIT",
   "author": "Adam Laycock",
+  "maintainers": [
+    "TSRBerry"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Arcath/rollup-plugin-screeps"
+    "url": "https://github.com/TSRBerry/rollup-plugin-screeps"
   },
-  "version": "1.0.1",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "version": "1.0.2",
   "main": "dist/index.js",
   "module": "dist/es/index.js",
   "scripts": {
