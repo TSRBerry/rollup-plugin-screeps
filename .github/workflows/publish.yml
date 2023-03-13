@@ -6,6 +6,7 @@ on:
 
 jobs:
   gpr:
+    name: Github Packages
     runs-on: ubuntu-latest
     
     permissions:
