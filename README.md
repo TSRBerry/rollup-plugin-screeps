@@ -2,7 +2,7 @@
 
 ## Install
 
-```
+```shell
 npm install --save-dev @tsrberry/rollup-plugin-screeps
 ```
 
