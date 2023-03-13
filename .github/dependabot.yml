@@ -1,0 +1,21 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    open-pull-requests-limit: 5
+    reviewers:
+      - TSRBerry
+    schedule:
+      interval: daily
+    commit-message:
+      prefix: dep npm
+      
+  - package-ecosystem: github-actions
+    directory: /
+    open-pull-requests-limit: 5
+    reviewers:
+      - TSRBerry
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: dep npm
