@@ -3,7 +3,7 @@
 ## Install
 
 ```
-npm install --save-dev rollup-plugin-screeps
+npm install --save-dev @tsrberry/rollup-plugin-screeps
 ```
 
 ## Usage
@@ -11,7 +11,7 @@ npm install --save-dev rollup-plugin-screeps
 In `rollup.config.js`
 
 ```js
-import screeps from "rollup-plugin-screeps";
+import screeps from "@tsrberry/rollup-plugin-screeps";
 
 ...
 
@@ -21,7 +21,7 @@ export default {
 
   plugins: [
     ...
-    screeps({configFile: "./screeps.json"})
+    screeps({configFile: "./.screeps.json"})
   ]
 }
 ```
