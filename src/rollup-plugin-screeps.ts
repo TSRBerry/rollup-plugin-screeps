@@ -31,26 +31,16 @@ export interface CodeList {
 }
 
 export function generateSourceMaps(bundle: OutputBundle) {
-  // Iterate through bundle and test if type===chunk && map is defined
+  // Iterate through bundle and test if type===asset && fileName ends with ".map"
   let itemName: string;
   for (itemName in bundle) {
     let item = bundle[itemName];
-    if (item.type === "chunk" && item.map) {
+    if (item.type === "asset" && item.fileName.endsWith(".map")) {
 
-      // Tweak maps
-      let tmp = item.map.toString;
-
-      // @ts-ignore
-      delete item.map.sourcesContent;
-
-      item.map.toString = function () {
-        return "module.exports = " + tmp.apply(this, arguments as unknown as []) + ";";
-
-      }
+      // Tweak map
+      item.source = `module.exports = ${item.source};`;
     }
-
   }
-
 }
 
 export function writeSourceMaps(options: OutputOptions) {
