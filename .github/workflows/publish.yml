@@ -29,6 +29,10 @@ jobs:
       - name: Run tests
         run: npm test
 
+      - name: Increment minor version for dependency updates
+        if: ${{ github.actor == 'dependabot[bot]' }}
+        run: npm version patch
+
       - name: Publish package
         run: npm publish
         env:
