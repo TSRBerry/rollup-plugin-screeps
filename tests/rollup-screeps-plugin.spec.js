@@ -10,7 +10,7 @@ const copy = require("rollup-plugin-copy")
 const screeps = require('../src/rollup-plugin-screeps')
 
 
-describe('Rollup Screeps Plugin', function(){
+describe('Rollup Screeps Plugin', function () {
   it('should support tokens for screeps.com and email/password for any other server', () => {
     var config = {
       "token": "foo",
@@ -59,7 +59,7 @@ describe('Rollup Screeps Plugin', function(){
     expect(screeps.validateConfig(config)).to.equal(true)
   })
 
-  it('should generate source maps', async function(){
+  it('should generate source maps', async function () {
     var options = {
       input: './tests/fixtures/main.ts',
       output: {
@@ -68,15 +68,15 @@ describe('Rollup Screeps Plugin', function(){
         format: 'cjs'
       },
       plugins: [
-        clear({"targets": ["./tests/dist"]}),
-        typescript({tsconfig: './tests/tsconfig.json'}),
-        screeps.screeps({dryRun: true})
+        clear({ "targets": ["./tests/dist"] }),
+        typescript({ tsconfig: './tests/tsconfig.json' }),
+        screeps.screeps({ dryRun: true })
       ]
     }
 
     let bundle = await rollup.rollup(options);
     let output = await bundle.write(options.output);
-    
+
     // Iterate through bundle and test if type===chunk && map is defined
     let itemName;
     for (itemName in bundle) {
@@ -95,7 +95,7 @@ describe('Rollup Screeps Plugin', function(){
 
   })
 
-  it('should generate branch name', async function(){
+  it('should generate branch name', async function () {
     var screepsOptions = {
       dryRun: true
     }
@@ -108,8 +108,8 @@ describe('Rollup Screeps Plugin', function(){
         format: 'cjs'
       },
       plugins: [
-        clear({"targets": ["./tests/dist"]}),
-        typescript({tsconfig: './tests/tsconfig.json'}),
+        clear({ "targets": ["./tests/dist"] }),
+        typescript({ tsconfig: './tests/tsconfig.json' }),
         screeps.screeps(screepsOptions)
       ]
     }
@@ -120,7 +120,7 @@ describe('Rollup Screeps Plugin', function(){
     expect(screeps.getBranchName('auto')).to.equal(git.branch())
   })
 
-  it('should use the branch name', async function(){
+  it('should use the branch name', async function () {
     var screepsOptions = {
       dryRun: true
     }
@@ -133,8 +133,8 @@ describe('Rollup Screeps Plugin', function(){
         format: 'cjs'
       },
       plugins: [
-        clear({"targets": ["./tests/dist"]}),
-        typescript({tsconfig: './tests/tsconfig.json'}),
+        clear({ "targets": ["./tests/dist"] }),
+        typescript({ tsconfig: './tests/tsconfig.json' }),
         screeps.screeps(screepsOptions)
       ]
     }
@@ -145,7 +145,7 @@ describe('Rollup Screeps Plugin', function(){
     expect(screeps.getBranchName('ai')).to.equal('ai')
   })
 
-  it('should create a list of files to upload', async function(){
+  it('should create a list of files to upload', async function () {
     var screepsOptions = {
       dryRun: true
     }
@@ -158,8 +158,8 @@ describe('Rollup Screeps Plugin', function(){
         format: 'cjs'
       },
       plugins: [
-        clear({"targets": ["./tests/dist"]}),
-        typescript({tsconfig: './tests/tsconfig.json'}),
+        clear({ "targets": ["./tests/dist"] }),
+        typescript({ tsconfig: './tests/tsconfig.json' }),
         copy({
           targets: [
             { src: "./tests/fixtures/*.wasm", dest: "./tests/dist" }
@@ -171,16 +171,16 @@ describe('Rollup Screeps Plugin', function(){
 
     let bundle = await rollup.rollup(options);
     let output = await bundle.write(options.output);
-    
+
     var code = screeps.getFileList(options.output.file)
 
     expect(Object.keys(code).length).to.equal(3)
     expect(code.main).to.match(/input/)
     expect(code['main.js.map']).to.match(/^module.exports/)
- 
+
   })
 
-  it('should upload WASM files as binary modules', async function() {
+  it('should upload WASM files as binary modules', async function () {
     var screepsOptions = {
       dryRun: true
     }
@@ -193,8 +193,8 @@ describe('Rollup Screeps Plugin', function(){
         format: 'cjs'
       },
       plugins: [
-        clear({"targets": ["./tests/dist"]}),
-        typescript({tsconfig: './tests/tsconfig.json'}),
+        clear({ "targets": ["./tests/dist"] }),
+        typescript({ tsconfig: './tests/tsconfig.json' }),
         copy({
           targets: [
             { src: "./tests/fixtures/*.wasm", dest: "./tests/dist" }
@@ -206,7 +206,7 @@ describe('Rollup Screeps Plugin', function(){
 
     let bundle = await rollup.rollup(options);
     let output = await bundle.write(options.output);
-    
+
     var code = screeps.getFileList(options.output.file)
 
     expect(code['wasm_module.wasm']).to.be.an('object');
@@ -214,7 +214,7 @@ describe('Rollup Screeps Plugin', function(){
     expect(code.main).to.be.a('string')
   })
 
-  it('should get the config', function(){
+  it('should get the config', function () {
     var config = screeps.loadConfigFile('./tests/fixtures/screeps.json')
     expect(config.branch).to.equal('foo')
   })
