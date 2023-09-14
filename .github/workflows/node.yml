@@ -28,9 +28,17 @@ jobs:
       contents: write
       pull-requests: write
     needs: test
-    if: ${{ github.actor == 'dependabot[bot]' }}
+    if: github.actor == 'dependabot[bot]'
     steps:
       - run: gh pr merge -s "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  publish:
+    if: github.actor == 'dependabot[bot]'
+    needs: [test, auto_merge]
+    uses: ./.github/workflows/publish.yml
+    permissions:
+      packages: write
+      contents: write
