@@ -7,12 +7,6 @@ on:
       - "package.json"
 
   workflow_dispatch:
-    inputs:
-      increment_minor:
-        description: "Increment the minor version of this package"
-        type: boolean
-        default: false
-
   workflow_call:
 
 jobs:
@@ -37,14 +31,6 @@ jobs:
 
       - name: Run tests
         run: npm test
-
-      - name: Increment minor version for dependency updates
-        if: github.actor == 'dependabot[bot]' || (github.event_name == 'workflow_dispatch' && inputs.increment_minor)
-        run: |
-          git config user.name 'dependabot[bot]'
-          git config user.email '49699333+dependabot[bot]@users.noreply.github.com'
-          npm version patch
-          git push
 
       - name: Publish package
         run: npm publish
