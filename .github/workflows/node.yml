@@ -42,12 +42,16 @@ jobs:
           node-version-file: ".nvmrc"
           cache: "npm"
 
-      - name: Increment minor version for dependency updates
-        id: version_bump
+      - name: Configure git
         run: |
           git config user.name 'dependabot[bot]'
           git config user.email '49699333+dependabot[bot]@users.noreply.github.com'
-          npm version patch
+
+      - name: Increment minor version for dependency updates
+        id: version_bump
+        run: |
+          NEW_VERSION=$(npm version patch)
+          echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
           git push
 
       - uses: TSRBerry/unstable-commands@v1
@@ -65,6 +69,15 @@ jobs:
         run: |
           git reset --hard HEAD~1
           git push --force-with-lease
+
+      - uses: actions/checkout@v4
+        with:
+          ref: master
+
+      - name: Push tag
+        run: |
+          git tag ${{ steps.version_bump.outputs.version }}
+          git push --tags
 
   publish:
     if: github.actor == 'dependabot[bot]'
