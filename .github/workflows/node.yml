@@ -40,16 +40,28 @@ jobs:
           cache: "npm"
 
       - name: Increment minor version for dependency updates
+        id: version_bump
         run: |
           git config user.name 'dependabot[bot]'
           git config user.email '49699333+dependabot[bot]@users.noreply.github.com'
           npm version patch
           git push
 
-      - run: gh pr merge -s "$PR_URL"
+      - uses: TSRBerry/unstable-commands@v1
+        with:
+          commands: gh pr merge -s "$PR_URL"
+          timeout-minutes: "2"
+          retry-codes: 1
+          max-retries: 5
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Reset version bump on failure
+        if: ${{ failure() && steps.version_bump.outcome == 'success' }}
+        run: |
+          git reset --hard HEAD~1
+          git push --force-with-lease
 
   publish:
     if: github.actor == 'dependabot[bot]'
