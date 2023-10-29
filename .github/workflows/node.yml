@@ -23,6 +23,9 @@ jobs:
         run: npm test
 
   auto_merge:
+    concurrency:
+      group: dependabot-auto-merge
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     permissions:
       contents: write
