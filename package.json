@@ -27,7 +27,7 @@
   "devDependencies": {
     "@types/chai": "^4.3.6",
     "@types/git-rev-sync": "^2.0.0",
-    "@types/mocha": "^10.0.1",
+    "@types/mocha": "^10.0.3",
     "@types/node": "^18.18.0",
     "chai": "^4.3.8",
     "chai-as-promised": "^7.1.1",
