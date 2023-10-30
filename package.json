@@ -28,7 +28,7 @@
     "@types/chai": "^4.3.9",
     "@types/git-rev-sync": "^2.0.0",
     "@types/mocha": "^10.0.3",
-    "@types/node": "^18.18.0",
+    "@types/node": "^20.8.9",
     "chai": "^4.3.10",
     "chai-as-promised": "^7.1.1",
     "esm": "^3.2.25",
