@@ -13,7 +13,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
-  "version": "1.0.31",
+  "version": "1.0.32",
   "main": "dist/index.js",
   "module": "dist/es/index.js",
   "scripts": {
@@ -38,7 +38,7 @@
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-hypothetical": "^2.1.1",
     "rollup-plugin-typescript2": "^0.36.0",
-    "ts-node": "^10.9.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
   "keywords": [
