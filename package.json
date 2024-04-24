@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "git-rev-sync": "^3.0.2",
-    "screeps-api": "^1.11.0"
+    "screeps-api": "^1.16.1"
   },
   "devDependencies": {
     "@types/chai": "^4.3.11",
