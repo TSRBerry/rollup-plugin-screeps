@@ -13,7 +13,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
-  "version": "1.0.111",
+  "version": "1.0.112",
   "main": "dist/index.js",
   "module": "dist/es/index.js",
   "scripts": {
@@ -25,11 +25,11 @@
     "screeps-api": "^1.16.1"
   },
   "devDependencies": {
-    "@types/chai": "^4.3.11",
+    "@types/chai": "^4.3.16",
     "@types/git-rev-sync": "^2.0.2",
     "@types/mocha": "^10.0.7",
     "@types/node": "^20.14.12",
-    "chai": "^4.3.10",
+    "chai": "^4.5.0",
     "chai-as-promised": "^8.0.0",
     "esm": "^3.2.25",
     "mocha": "^10.7.0",
