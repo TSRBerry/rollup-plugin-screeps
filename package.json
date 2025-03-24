@@ -13,7 +13,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
-  "version": "1.0.199",
+  "version": "1.0.200",
   "main": "dist/index.js",
   "module": "dist/es/index.js",
   "scripts": {
