@@ -13,7 +13,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
-  "version": "1.0.255",
+  "version": "1.0.256",
   "main": "dist/index.js",
   "module": "dist/es/index.js",
   "scripts": {
@@ -30,7 +30,7 @@
     "@types/mocha": "^10.0.10",
     "@types/node": "^24.3.0",
     "chai": "^4.5.0",
-    "chai-as-promised": "^8.0.1",
+    "chai-as-promised": "^8.0.2",
     "esm": "^3.2.25",
     "mocha": "^11.7.1",
     "rollup": "^4.46.4",
